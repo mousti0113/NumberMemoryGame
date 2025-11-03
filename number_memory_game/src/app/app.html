@@ -1,0 +1,49 @@
+<div class="game-container">
+  <div class="grid">
+    @for (cell of cells(); track cell.id) {
+      <div
+        class="cell"
+        [class.active]="cell.isActive"
+        [class.showing]="showNumbers() && cell.isActive"
+        [class.hidden]="isPlaying() && cell.isActive"
+        [class.clickable]="isPlaying() && cell.isActive"
+        (click)="onCellClick(cell)">
+        @if (showNumbers() && cell.value !== null) {
+          <span class="number">{{ cell.value }}</span>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="controls">
+    <button
+      class="btn btn-start"
+      (click)="startGame()"
+      [disabled]="!canStart()">
+      Inizia
+    </button>
+
+    <div class="timer">
+      @if (hasWon()) {
+        <p class="success-message">
+          Ci hai messo: <strong>{{ formatTime(elapsedTime()) }}s</strong>
+        </p>
+      }
+      @if (hasLost()) {
+        <p class="error-message">Hai perso! Riprova.</p>
+      }
+      @if (gameState() === 'showing') {
+        <p class="info-message">Memorizza i numeri!</p>
+      }
+      @if (isPlaying()) {
+        <p class="info-message">Clicca in ordine crescente</p>
+      }
+    </div>
+
+    <button
+      class="btn btn-reset"
+      (click)="resetGame()">
+      Azzera
+    </button>
+  </div>
+</div>
