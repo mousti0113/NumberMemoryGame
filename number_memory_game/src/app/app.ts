@@ -19,7 +19,7 @@ export class App implements OnInit{
   // Costanti di gioco
   private readonly GRID_SIZE = 60;
   private readonly NUMBER_COUNT = 5;
-  private readonly SHOW_TIME = 800; // millisecondi
+  private readonly SHOW_TIME = 300; // millisecondi
 
   // Audio
   private readonly clickSound = new Audio('metal-button-push.mp3');
@@ -118,7 +118,7 @@ export class App implements OnInit{
 
     this.cells.set(updatedCells);
 
-    // Dopo 800ms, nascondi i numeri e inizia il gioco
+    // Dopo 300ms, nascondi i numeri e inizia il gioco
     setTimeout(() => {
       this.gameState.set('playing');
     }, this.SHOW_TIME);
