@@ -50,6 +50,12 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "electron": {
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "baseHref": "./"
             }
           },
           "defaultConfiguration": "production"
